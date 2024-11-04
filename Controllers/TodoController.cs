@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace TodoApi.Controllers;
 
-[Route("api/[controller]")]
+[Route("")]
 [ApiController]
 public class TodoController : ControllerBase
 {
