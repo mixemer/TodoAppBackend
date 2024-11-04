@@ -7,6 +7,17 @@ public class Startup
 {
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                });
+        });
+        
         services.AddControllers();
     }
 
@@ -18,6 +29,8 @@ public class Startup
         }
 
         app.UseRouting();
+
+        app.UseCors("AllowAll"); // Enable CORS
 
         app.UseEndpoints(endpoints =>
         {
